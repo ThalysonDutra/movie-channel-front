@@ -1,8 +1,17 @@
+import {HomeComponent}  from './styled';
+import FormLogin from '../components/FormLogin'
+
 
 
 function Home() {
   return (
-    <h1>Hello World</h1>
+    <HomeComponent>
+       <FormLogin/>
+       <h4>Não tem cadastro? Cadastre-se.</h4>          
+        
+    </HomeComponent>        
+    
+    
   );
 }
 
