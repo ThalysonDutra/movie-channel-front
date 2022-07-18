@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
+export const Formu = styled.form`
+    box-sizing: border-box;
 
-
-  div{
-    margin: 40vh 20vw;
+    margin: 40vh 20vw 0%;
     display: flex;
     flex-direction: column;
     justify-content:flex-end;
     float: right;
-    }
+
 
   input {
     width: 300px;
@@ -23,19 +22,38 @@ export const Form = styled.form`
     &:focus{
       border: 1 px solid #3B0071;
     }
-    margin: 10px;
+    margin: 15px;
   }
 
+  h2{
+    margin: 5px 10px;
+    text-align: center;
+    font-family: Geneva, Verdana, sans-serif;
+    color: #3B0071;
+    font-size: 30px;
+  }
+
+
+  .cadastrese{
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    vertical-align: bottom;
+    margin: 0 15px;
+  }
+
+  
   button {
-    width: 150px;
+    width: 200px;
     height: 60px;
     background-color: #3B0071 ;
     border-radius: 3px;
     border: none;
     color: #fff;
     transition: all 300ms;
-    margin: 10px 10px;
-
+    margin: 15px 22%;
+    cursor:pointer;
+    
   }
 
   button:hover{

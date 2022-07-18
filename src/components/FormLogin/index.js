@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
+import { Row, Button, Col, Form } from 'react-bootstrap';
 
 import axios from '../../services/axios';
-import { Form } from "./styled";
+import { Formu } from "./styled";
 
 export default function FormLogin() {
     const [email, setEmail] = useState('');
@@ -30,30 +31,48 @@ export default function FormLogin() {
     return (
         <>
 
-            <Form onSubmit={handleSubmit}>
+            <Formu onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor='email'>
-                        E-mail
+                    <Row>
+                        <h2>Login</h2>
+                    </Row>
+                    <Row>
                         <input type='email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder="Digite seu e-mail"
                         />
-                    </label>
+                    </Row>
 
-                    <label htmlFor='password'>
-                        Senha
+                    <Row>
                         <input type='password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             placeholder="Digite uma senha"
                         />
-                    </label>
 
-                    <button type="submit"> Entrar </button>
+                    </Row>
+
+                    <Form.Group as={Row} className="cadastrese" controlId="formHorizontalEmail">
+                        <Form.Label column sm={2}>
+                            <p>Não tem cadastro?</p>
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Label column sm={2}>
+                            <p><a href="#teste">Cadastre-se</a>
+                                </p>
+                        </Form.Label>
+                        </Col>
+                    </Form.Group>
+
+                    <Button>
+                        Entrar
+                    </Button>
+
+
                 </div>
 
-            </Form>
+            </Formu>
         </>
 
 
