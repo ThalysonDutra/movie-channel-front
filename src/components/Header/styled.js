@@ -51,6 +51,10 @@ export const Nav = styled.nav`
     color: #fff;
     vertical-align: bottom;
     margin: 0 0px;
+  }
+
+  .menu-item2{
+    margin: 0px 0px 0px 30px;
 
   }
 
@@ -58,6 +62,10 @@ export const Nav = styled.nav`
     vertical-align: bottom;
     margin: auto 2.5px;
 
+  }
+
+  .space{
+    margin: 10px 10px;
   }
 
 `;

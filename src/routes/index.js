@@ -7,6 +7,8 @@ import ControlPanel from "../pages/ControlPanel";
 import CreateUser from "../pages/Users/CreateUser";
 import CreateMovie from "../pages/Movies/CreateMovie";
 import ListMovie from "../pages/Movies/ListMovie";
+import ListCategoriesPage from "../pages/Categories/ListCategory";
+import UpdateCategory from "../pages/Categories/UpdateCategory";
 
 
 
@@ -20,6 +22,8 @@ export default function RoutesComponent(){
                 <Route path = '/createcategory' element={<CreateCategory />}/>
                 <Route path = '/createmovie' element={<CreateMovie/>}/>
                 <Route path = '/movies' element={<ListMovie/>}/>
+                <Route path = '/listcategories' element={<ListCategoriesPage/>}/>
+                <Route path = '/updatecategories' element={<UpdateCategory/>}/>
             </Routes>
         </BrowserRouter>
     );

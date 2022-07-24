@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 
 export const ListMovieComponent = styled.body`
 
-
     
 *{
 
@@ -12,7 +11,5 @@ export const ListMovieComponent = styled.body`
      overflow-y: hidden;
 
   }
-
-
 
 `;

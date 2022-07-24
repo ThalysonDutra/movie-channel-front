@@ -31,8 +31,9 @@ export default function FormCategory() {
         <FormCategoryComponent onSubmit={handleSubmit}>
             <div>
                 <Row>
-                    <h2>Criar Categoria</h2>
+                    <h2>Cadastrar Categoria</h2>
                 </Row>
+
                 <Row>
                     <input type='text'
                         value={name}

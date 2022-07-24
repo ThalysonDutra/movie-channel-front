@@ -56,10 +56,16 @@ export const FormMovieComponent = styled.form`
     
   }
 
-  button:hover{
-    filter: brightness(75%);
+  .btn-primary{
+    border-color: #3B0071;
+
   }
+  
+  .btn-primary:hover{
+    filter: brightness(100%);
+    background-color: #DB7093;
+    border-color: #DB7093;
 
-
+  }
 
 `;

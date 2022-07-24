@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const PanelControlComponent = styled.body`
     margin: 35vh 14vw 0%;
+    background-color: unset;
+    border-color: unset;
  
   .menu-item{
     color: #fff;
@@ -9,7 +11,6 @@ export const PanelControlComponent = styled.body`
     margin: 0 auto;
   }
 
-  
 p{
     font-family: Geneva, Verdana, sans-serif;
     color: #fff;
@@ -38,8 +39,6 @@ button p{
     background-color: #3B0071 ;
     border-radius: 10px;
     font-size: 20px;
-    border: none;
-    color: #fff;
     transition: all 300ms;
     margin: 15px 15px;
     cursor: pointer;
@@ -47,10 +46,16 @@ button p{
     
   }
 
-  button:hover{
-    filter: brightness(75%);
+  .btn-primary{
+    border-color: #3B0071;
+
   }
 
+  .btn-primary:hover{
+    filter: brightness(100%);
+    background-color: #DB7093;
+    border-color: #DB7093;
 
+  }
 
 `;

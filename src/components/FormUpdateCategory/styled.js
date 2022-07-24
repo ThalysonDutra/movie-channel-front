@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormUserComponent = styled.form`
+export const FormUpdate = styled.form`
     box-sizing: border-box;
 
     margin: 40vh 20vw 0%;
@@ -26,7 +26,7 @@ export const FormUserComponent = styled.form`
   }
 
   h2{
-    margin: 5px 10px;
+    margin: 5px 3px;
     text-align: center;
     font-family: Geneva, Verdana, sans-serif;
     color: #3B0071;
@@ -52,7 +52,7 @@ export const FormUserComponent = styled.form`
     color: #fff;
     transition: all 300ms;
     margin: 15px 22%;
-    cursor:pointer;
+    cursor: pointer;
     
     
   }
