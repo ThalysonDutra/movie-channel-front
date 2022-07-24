@@ -4,45 +4,81 @@ import { Row, Button } from 'react-bootstrap';
 
 import axios from '../../services/axios';
 import { FormUpdate } from "./styled";
+import { loadCategoryById } from "../../utils/loadCategoryByID";
+import { useNavigate } from 'react-router-dom';
 
-class FormUpadateCategoryComponent extends Component{
-    
-        async componentDidMount() {
-        await this.loadCategoryById();
+
+class FormUpadateCategoryComponent extends Component {
+
+
+
+    state = {
+        category: [],
+        name: '',
+        id: ''
     }
 
-    handleSubmit = (e) => {
-        const { value } = e.target;
-        this.setState({searchValue1: value});
+    async componentDidMount() {
+        await this.loadCategory();
+
     }
 
-    loadCategory = async (props) => {
-        const categoryJson = await loadCategoryById(props);
+    loadCategory = async () => {
+
+        const categoryJson = await loadCategoryById(this.props.id);
+
         this.setState({ category: categoryJson });
+        this.setState({ name: categoryJson['name'] })
+
     }
-    
+
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        let formErrors = false;
+
+        if (formErrors) {
+            return;
+        }
+        try {
+            const { category, name } = this.state;
+            const response = await axios.put('/category/' + category.id, {
+                name
+            })
+            console.log(response.data)
+            window.location.href = "/listcategories";
+
+        } catch (e) {
+
+        }
+
+    }
+
+
+
     render() {
+        const { name } = this.state;
 
         return (
-        <FormUpdate >
-            <div>
-                <Row>
-                    <h2>Editar Categoria</h2>
-                </Row>
+            <FormUpdate  >
+                <div>
+                    <Row>
+                        <h2>Editar Categoria</h2>
+                    </Row>
 
-                <Row>
-                    <input type='text'
-                        value={category.name}
-                        onChange={e => setName(e.target.value)}
-                    />
-                </Row>
+                    <Row>
+                        <input type='text'
+                            value={name}
+                            onChange={e => this.setState({ name: e.target.value })}
+                        />
+                    </Row>
 
-                <Button>
-                    Salvar
-                </Button>
-            </div>
-        </FormUpdate>
-    );
+                    <Button onClick={this.handleSubmit}>
+                        Salvar
+                    </Button>
+                </div>
+            </FormUpdate>
+        );
     }
 }
 

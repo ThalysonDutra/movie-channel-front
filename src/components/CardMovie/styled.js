@@ -47,6 +47,8 @@ export const CardComponent = styled.body`
 
   img{
     margin: 30px 0px 15px 30px;
+    max-height: 300px;
+    max-width: 200px;
   }
 
   h4{

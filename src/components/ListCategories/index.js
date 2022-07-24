@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TableCategoriesCompontent } from "./styled";
 import { Component } from "react";
 import { utilloadCategories}  from "../../utils/utilloadCategories";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
-import { InputGroup, Button, Form } from "react-bootstrap";
+import { InputGroup, Form } from "react-bootstrap";
 import { loadCategoryById} from "../../utils/loadCategoryByID";
+import { Link } from "react-router-dom";
+import axios from '../../services/axios';
 
 
 
@@ -13,7 +15,7 @@ class TableCategories extends Component {
 
     state = {
         categories: [],
-        searchValue: ''
+        category: [],
     };
 
 
@@ -31,10 +33,27 @@ class TableCategories extends Component {
         this.setState({searchValue: value});
     }
 
-    handleChangeById = (e) => {
-        const { value } = e.target;
-        this.setState({searchValue1: value});
+    handleSubmit = async (id) => {
+      
+        let formErrors = false;
+
+        if (formErrors) {
+            return;
+        }
+        try {
+            const { category, name } = this.state;
+            const response = await axios.delete('/category/' + id, {
+                name
+            })
+            console.log(response.data)
+            window.location.href = "/listcategories";
+
+        } catch (e) {
+
+        }
+
     }
+
 
     render() {
         const { categories, searchValue } = this.state;
@@ -73,11 +92,11 @@ class TableCategories extends Component {
                             </thead>
                             <tbody>
                                 {filteredCategories.map(category => (
-                                <tr>
+                                <tr key={category.id}>
                                 <td>{category.id}</td>
                                 <td>{category.name}</td>
-                                <td className="icons edit"> <a href="" ><FaRegEdit /></a></td>
-                                <td className="icons delete"> <a href="" ><AiOutlineDelete /></a> </td>
+                                <td className="icons edit"> <Link to={"/updatecategories/" + category.id}><FaRegEdit /></Link></td>
+                                <td className="icons delete"> <button onClick={()=> this.handleSubmit(category.id)}><AiOutlineDelete /></button> </td>
                               </tr>
                             ))}
                                 

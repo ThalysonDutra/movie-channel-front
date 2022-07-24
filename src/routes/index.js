@@ -23,7 +23,7 @@ export default function RoutesComponent(){
                 <Route path = '/createmovie' element={<CreateMovie/>}/>
                 <Route path = '/movies' element={<ListMovie/>}/>
                 <Route path = '/listcategories' element={<ListCategoriesPage/>}/>
-                <Route path = '/updatecategories' element={<UpdateCategory/>}/>
+                <Route path = '/updatecategories/:id' element={<UpdateCategory/>}/>
             </Routes>
         </BrowserRouter>
     );

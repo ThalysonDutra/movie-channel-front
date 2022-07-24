@@ -1,111 +1,143 @@
 import { CardComponent } from "./styled";
 import img from '../../assets/images/vingadores.png';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
-import React, { useRef, useState } from "react";
+import axios from '../../services/axios';
+import React, { useRef, useState, Component } from "react";
 import ReactStars from "react-rating-stars-component";
-
 import 'bootstrap/dist/css/bootstrap.css';
+import { loadMovies } from "../../utils/loadMovies";
+import { utilloadCategories } from "../../utils/utilloadCategories";
 
-export default function CardMovie() {
-    const [value, setValue] = useState(5);
-    // Create ref 
-    const valueRef = useRef();
-    // Initialize ref
-    valueRef.current = value;
+class CardMovie extends Component {
 
-    return (
-        <CardComponent>
-            <div className="movie">
+    state = {
+        value: 0,
+        valueRef: 0,
+        movies: [],
+        categories: [],
+        searchValue: ""
+    };
 
-                <Row>
-                    <Col sm={2}>
-                        <div className="title">
-                            <img src={img} />
-                        </div>
-                    </Col>
-                    <Col sm={8}>
-                        <h1>Os Vingadores: O Ultimato</h1>
 
-                        <div className="genero">
-                            <p>
-                                Ação</p>
-                        </div>
-                        <div className="description">
+    async componentDidMount() {
+        await this.loadListMovies();
+    }
 
-                            <p className="texto">
-                                Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. Lorem Ipsum has been the
-                                industry's standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled
-                                it to make a type specimen book. It has survived not only
-                                five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It was
-                                popularised in the 1960s with the release of Letraset sheets
-                                containing Lorem Ipsum passages, and more recently with
-                                desktop publishinbv g software like Aldus PageMaker including
-                                versions of Lorem Ipsum.
-                            </p>
-                        </div>
+    loadListMovies = async () => {
+        const moviesJson = await loadMovies();
+        const categoriesJson = await utilloadCategories();
+
+        this.setState({ movies: moviesJson, categories: categoriesJson });
+    }
+
+    handleChange = (e) => {
+        const { value } = e.target;
+        this.setState({ searchValue: value });
+    }
+
+    handleSubmit = async (id, score) => {
+        const response = await axios.post('/movie/' + id + "/score", {
+            score
+        })
+
+        window.location.reload(false);
+
+
+
+    }
+
+
+    render() {
+        const { value } = this.state;
+        const { movies, searchValue, categories } = this.state;
+        var filteredMovies = !!searchValue ?
+            movies.filter(movies => {
+                return movies.name.toLowerCase().includes(searchValue.toLowerCase());
+            }) : movies;
+
+        return (
+
+            <CardComponent>
+                {filteredMovies.map(movie => (
+                    <div className="movie">
+
                         <Row>
-                            <Col>
-                                <p>
-                                    Ano
-                                </p>
-                                <p>
-                                    2019
-                                </p>
+                            <Col sm={2}>
+                                <div className="title">
+                                    <img src={movie.link} />
+                                </div>
                             </Col>
+                            <Col sm={8}>
+                                <h1>{movie.name}</h1>
 
-                            <Col>
-                                <p>
-                                    Duração
-                                </p>
-                                <p>
-                                    129 min
-                                </p>
+                                <div className="genero">
+                                    <p>
+                                        {categories.find(element => element.id == movie.categoryId).name}</p>
+                                </div>
+                                <div className="description">
+
+                                    <p className="texto">
+                                        {movie.description}
+                                    </p>
+                                </div>
+                                <Row>
+                                    <Col>
+                                        <p>
+                                            Ano
+                                        </p>
+                                        <p>
+                                            {movie.year}
+                                        </p>
+                                    </Col>
+
+                                    <Col>
+                                        <p>
+                                            Duração
+                                        </p>
+                                        <p>
+                                            {movie.duration} min
+                                        </p>
+                                    </Col>
+
+                                    <Col>
+                                        <p>
+                                            Nota
+                                        </p>
+                                        <p>
+                                            {parseFloat(movie.score).toFixed(1)}
+                                        </p>
+                                    </Col>
+
+                                    <Col>
+                                        <p>Avalie</p>
+
+                                        <ReactStars
+                                            count={5}
+                                            value={movie.score}
+                                            isHalf={true}
+                                            size={24}
+                                            onChange={(newValue) => this.handleSubmit(movie.id, newValue)}
+                                            activeColor="#ffd700"
+                                        />,
+
+                                    </Col>
+
+
+                                </Row>
+
                             </Col>
-
-                            <Col>
-                                <p>
-                                    Nota
-                                </p>
-                                <p>
-                                    {value}
-                                </p>
-                            </Col>
-
-                            <Col>
-                                <p>Avalie</p>
-
-                                <ReactStars
-                                    count={5}
-                                    value={value}
-                                    isHalf= {true}
-                                    onChange={(newValue) => {
-                                        setValue(newValue);
-                                        // Get the latest state
-                                        console.log(valueRef.current);
-                                    }}
-                                    size={24}
-                                    activeColor="#ffd700"
-                                />,
-
-                            </Col>
-
                         </Row>
 
-                    </Col>
-                </Row>
 
 
+                    </div>
+                ))}
 
-            </div>
+            </CardComponent>
 
-        </CardComponent>
-
-    );
-
+        );
+    }
 }
+
+export default CardMovie;

@@ -40,7 +40,7 @@ export default function FormLogin() {
                         <input type='email'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            placeholder="Digite seu e-mail"
+                            placeholder="E-mail"
                         />
                     </Row>
 
@@ -48,21 +48,23 @@ export default function FormLogin() {
                         <input type='password'
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder="Digite uma senha"
+                            placeholder="Senha"
                         />
 
                     </Row>
 
                     <Form.Group as={Row} className="cadastrese" controlId="formHorizontalEmail">
-                        <Form.Label column sm={2}>
-                            <p>Não tem cadastro?</p>
+                        <Row>
+                            
+                        </Row>
+                        <Form.Label column sm={6}>
+                           <div className="text">Não tem cadastro?</div> 
                         </Form.Label>
-                        <Col sm={10}>
-                        <Form.Label column sm={2}>
-                            <p><a href="#teste">Cadastre-se</a>
-                                </p>
+                        
+                        <Form.Label column sm={6}>
+                            <div className="text2"><a href="/createuser">Cadastre-se</a></div>
                         </Form.Label>
-                        </Col>
+                        
                     </Form.Group>
 
                     <Button>

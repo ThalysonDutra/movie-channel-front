@@ -25,6 +25,20 @@ export const Formu = styled.form`
     margin: 15px;
   }
 
+  .text {    
+
+  }
+
+  .text2 {    
+    font-size: 17px;
+    margin: 0 0 0 50px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #3B0071;
+  }
+
   h2{
     margin: 5px 10px;
     text-align: center;

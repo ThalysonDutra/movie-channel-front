@@ -1,34 +1,46 @@
 import React, { useState } from "react";
 
-import { Row, Button, Col, Form } from 'react-bootstrap';
-
+import { Row, Button, Alert } from 'react-bootstrap';
 import axios from '../../services/axios';
 import { FormCategoryComponent } from "./styled";
+import { useNavigate} from 'react-router-dom';
+
 
 export default function FormCategory() {
+    
     const [name, setName] = useState('');
-
-
+    const navigate = useNavigate();
+    
     async function handleSubmit(e) {
+   
         e.preventDefault();
         let formErrors = false;
 
         if (formErrors) {
-            return;
+            return; 
         }
+         
         try {
-            const response = await axios.post('/categories', {
-                name
-            })
-            console.log(response.data);
-        } catch (e) {
+            if(name != ""){
+                const response = await axios.post('/category', {
+                    name
+                })
+                console.log(response.data);  
 
+                navigate('/listcategories');
+            }else {
+                return alert("Você não pode salvar um campo em branco.")
+            }
+          
+            
+        } catch (e) {
+                return alert('Categoria já existe.');
+            }
         }
 
-    }
 
     return (
-        <FormCategoryComponent onSubmit={handleSubmit}>
+        <FormCategoryComponent>
             <div>
                 <Row>
                     <h2>Cadastrar Categoria</h2>
@@ -42,7 +54,7 @@ export default function FormCategory() {
                     />
                 </Row>
 
-                <Button>
+                <Button onClick={handleSubmit} >
                     Cadastrar
                 </Button>
             </div>

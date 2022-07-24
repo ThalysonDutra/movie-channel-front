@@ -9,7 +9,7 @@ export const UpdateCategoryComponent = styled.body`
   background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
-  margin: -8px -8px;
+  margin: 0px 0px;
   overflow-x: hidden;
   overflow-y: hidden;
 

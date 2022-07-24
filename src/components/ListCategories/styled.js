@@ -19,6 +19,8 @@ th {
 .container{
     margin: 200px 10px 30px 300px;
     width: 100vw;
+    background-color: #fff;
+
  }
 
 .icons{
@@ -29,8 +31,10 @@ th {
    color:#4682B4;     
 }
 
-.delete a{
-   color:#FF0000;     
+.delete button{
+   color:#FF0000;
+   border: none;
+   background-color: transparent;     
 }
 
 input{
