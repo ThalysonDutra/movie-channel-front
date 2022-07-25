@@ -1,16 +1,13 @@
-import React, { Component, useState } from "react";
-
+import React, { Component } from "react";
 import { Row, Button } from 'react-bootstrap';
-
 import axios from '../../services/axios';
+
 import { FormUpdate } from "./styled";
 import { loadCategoryById } from "../../utils/loadCategoryByID";
-import { useNavigate } from 'react-router-dom';
+
 
 
 class FormUpadateCategoryComponent extends Component {
-
-
 
     state = {
         category: [],
