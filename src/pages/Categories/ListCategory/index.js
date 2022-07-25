@@ -5,9 +5,16 @@ import { ListCategoriesComponent } from './styled';
 function ListCategoriesPage() {
   return (
     <ListCategoriesComponent>
-        <TableCategories />
+      <div className='menu'>
+        <a href='/movies'> Início </a>
+      </div>
+
+      <div className='menu'>
+        <a href='/controlpanel'>Voltar</a>
+      </div>
+      <TableCategories />
     </ListCategoriesComponent>
-    )
+  )
 };
 
 export default ListCategoriesPage;

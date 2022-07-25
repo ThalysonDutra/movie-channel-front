@@ -27,7 +27,6 @@ export default function Header() {
                         <a href="/controlpanel" className={isAdmin == "false" ? "hidden" : undefined}>  Painel</a>
 
 
-
                         <FaHome size={24} className="menu-item2" />
                         <a href="/">  Home </a>
 

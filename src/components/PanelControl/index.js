@@ -13,29 +13,30 @@ export default function ButtonPanelControl() {
     return (
         <PanelControlComponent>
             <div className="menu-item">
-                <Row >
-                    <Button >
-                        <MdCategory className="nameButton" size={30} />
-                        Categoria
-                    </Button>
+                <Row className="nameButton">
 
+                    <a href="/listcategories" className="nameButton">
+                        <Button >
+                            <MdCategory size={30} />
+                            Categoria
+                        </Button>
+                    </a>
 
-                    <Button>
-                        <FaUserAlt className="nameButton" size={30} />
-                        Usuário
-                    </Button>
+                    <a href="/listusers" className="nameButton">
+                        <Button>
+                            <FaUserAlt  size={30} />
+                            Usuário
+                        </Button>
+                    </a>
 
-                    <Button>
-                        <MdLocalMovies className="nameButton" size={30} />
-                        Filmes
-                    </Button>
+                    <a href="" className="nameButton">
+                        <Button>
+                            <MdLocalMovies size={30} />
+                            Filmes
+                        </Button>
+                    </a>
                 </Row>
-
-
             </div>
         </PanelControlComponent>
-
-
     );
-
 }

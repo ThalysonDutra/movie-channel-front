@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import img from '../../assets/images/background.png';
+import img from '../../../assets/images/backgroundlists.png';
 
-export const ControlPanelComponent = styled.body`
+export const ListUserComponent = styled.body`
   background: url(${img});
   background-size: cover;
 
@@ -11,7 +11,7 @@ export const ControlPanelComponent = styled.body`
   height: 100vh;
   margin: 0px 0px;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
 
 
   *{
@@ -19,7 +19,7 @@ export const ControlPanelComponent = styled.body`
     padding:0;
     box-sizing: border-box;
   }
-  
+
   a{
     text-decoration: none;
     color: #fff;
@@ -32,5 +32,4 @@ export const ControlPanelComponent = styled.body`
     margin: 25px 0 10px 60px;
     max-width: 50px;
    }
-
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TableCategoriesCompontent = styled.body`
+export const TableUsersCompontent = styled.body`
 
 background-color: unset;
 
@@ -17,7 +17,7 @@ th {
 
 
 .container{
-    margin: 100px 10px 30px 300px;
+    margin: 90px 10px 30px 300px;
     width: 100vw;
     background-color: #fff;
 
@@ -29,6 +29,10 @@ th {
 
 .edit a{
    color:#4682B4;     
+}
+
+.isAdmin{
+    text-align: center;
 }
 
 .delete button{

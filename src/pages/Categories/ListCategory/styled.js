@@ -19,4 +19,17 @@ export const ListCategoriesComponent = styled.body`
     padding:0;
     box-sizing: border-box;
   }
+
+  a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight:bold;
+   }
+
+   .menu{
+    padding:0;
+    margin: 25px 0 10px 60px;
+    max-width: 50px;
+   }
 `;

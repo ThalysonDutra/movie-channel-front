@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import MyRoute from "./MyRoute";
-
 
 import Home from '../../src/templates';
 import CreateCategory from "../pages/Categories/CreateCategory";
@@ -11,6 +9,9 @@ import CreateMovie from "../pages/Movies/CreateMovie";
 import ListMovie from "../pages/Movies/ListMovie";
 import ListCategoriesPage from "../pages/Categories/ListCategory";
 import UpdateCategory from "../pages/Categories/UpdateCategory";
+import ListUserPage from "../pages/Users/ListUser";
+import UpdateUser from "../pages/Users/UpdateUser";
+
 
 
 
@@ -26,6 +27,8 @@ export default function RoutesComponent(){
                 <Route path = '/movies' element={<ListMovie/>}/>
                 <Route path = '/listcategories' element={<ListCategoriesPage/>}/>
                 <Route path = '/updatecategories/:id' element={<UpdateCategory/>}/>
+                <Route path = '/listusers' element={<ListUserPage/>}/>
+                <Route path = '/updateuser/:id' element={<UpdateUser/>}/>
             </Routes>
         </BrowserRouter>
 

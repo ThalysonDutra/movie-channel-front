@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import img from '../../../assets/images/background3.png';
 
-export const UserComponent = styled.body`
+export const UpdateUserComponent = styled.body`
   background: url(${img});
   background-size: cover;
 
