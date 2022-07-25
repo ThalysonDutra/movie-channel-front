@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import MyRoute from "./MyRoute";
+
 
 import Home from '../../src/templates';
 import CreateCategory from "../pages/Categories/CreateCategory";
@@ -26,6 +28,8 @@ export default function RoutesComponent(){
                 <Route path = '/updatecategories/:id' element={<UpdateCategory/>}/>
             </Routes>
         </BrowserRouter>
+
+        
     );
 
 }

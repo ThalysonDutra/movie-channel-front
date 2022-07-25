@@ -58,6 +58,8 @@ export const Nav = styled.nav`
 
   }
 
+  .hidden { display:none; }
+
   .menu-item a{
     vertical-align: bottom;
     margin: auto 2.5px;

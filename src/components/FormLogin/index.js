@@ -1,29 +1,42 @@
 import React, { useState } from "react";
 
-import { Row, Button, Col, Form } from 'react-bootstrap';
+import { Row, Button, Form } from 'react-bootstrap';
+import {isEmail} from 'validator';
 
 import axios from '../../services/axios';
 import { Formu } from "./styled";
 
 export default function FormLogin() {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
+
         let formErrors = false;
 
-        if (formErrors) {
-            return;
+        if(!isEmail(email)){
+            formErrors = true;
+            alert('E-mail inválido.');
         }
+
         try {
-            const response = await axios.post('/user', {
+            const response = await axios.post('/user/login', {
                 email,
                 password,
             })
-            console.log(response.data);
-        } catch (e) {
+            localStorage.setItem("isAdmin", response.data.isAdmin);
 
+            
+            console.log(response.data);
+
+            
+            window.location.href = "/movies";
+        } catch (e) {
+           if(e.response.status == "422"){
+            alert('E-mail ou senha incorretos.');
+           }
         }
 
     }
@@ -31,7 +44,7 @@ export default function FormLogin() {
     return (
         <>
 
-            <Formu onSubmit={handleSubmit}>
+            <Formu >
                 <div>
                     <Row>
                         <h2>Login</h2>
@@ -67,7 +80,7 @@ export default function FormLogin() {
                         
                     </Form.Group>
 
-                    <Button>
+                    <Button onClick={handleSubmit} >
                         Entrar
                     </Button>
 

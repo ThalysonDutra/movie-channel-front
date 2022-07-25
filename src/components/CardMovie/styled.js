@@ -49,6 +49,8 @@ export const CardComponent = styled.body`
     margin: 30px 0px 15px 30px;
     max-height: 300px;
     max-width: 200px;
+    min-height: 300px;
+    min-width: 200px;
   }
 
   h4{
@@ -69,5 +71,11 @@ export const CardComponent = styled.body`
   .star{
     color: #CAF51F;
   }
+
+  input{
+    height: 40px;
+    margin: 20px 90px;
+}
+
 
 `;

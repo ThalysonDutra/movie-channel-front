@@ -8,6 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import 'bootstrap/dist/css/bootstrap.css';
 import { loadMovies } from "../../utils/loadMovies";
 import { utilloadCategories } from "../../utils/utilloadCategories";
+import { InputGroup, Form } from "react-bootstrap";
 
 class CardMovie extends Component {
 
@@ -44,7 +45,6 @@ class CardMovie extends Component {
         window.location.reload(false);
 
 
-
     }
 
 
@@ -58,7 +58,20 @@ class CardMovie extends Component {
 
         return (
 
+
             <CardComponent>
+
+
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        placeholder="  Pesquise aqui seu filme"
+                        onChange={this.handleChange}
+                        value={searchValue}
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                    />
+                </InputGroup>
+
                 {filteredMovies.map(movie => (
                     <div className="movie">
 
