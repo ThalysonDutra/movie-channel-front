@@ -11,6 +11,8 @@ import ListCategoriesPage from "../pages/Categories/ListCategory";
 import UpdateCategory from "../pages/Categories/UpdateCategory";
 import ListUserPage from "../pages/Users/ListUser";
 import UpdateUser from "../pages/Users/UpdateUser";
+import AdminListMoviePage from "../pages/Movies/AdminListMovie";
+import UpdateMoviePage from "../pages/Movies/UpdateMovie";
 
 
 
@@ -29,6 +31,8 @@ export default function RoutesComponent(){
                 <Route path = '/updatecategories/:id' element={<UpdateCategory/>}/>
                 <Route path = '/listusers' element={<ListUserPage/>}/>
                 <Route path = '/updateuser/:id' element={<UpdateUser/>}/>
+                <Route path = '/adminlistmovies' element={<AdminListMoviePage/>}/>
+                <Route path = '/updatemovie/:id' element={<UpdateMoviePage/>}/>
             </Routes>
         </BrowserRouter>
 

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { Row, Button, Col, Form } from 'react-bootstrap';
+import React from "react";
+import { Row, Button } from 'react-bootstrap';
 import { MdCategory } from 'react-icons/md';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdLocalMovies } from 'react-icons/md';
 
-
-import axios from '../../services/axios';
 import { PanelControlComponent } from "./styled";
 
 
@@ -29,7 +27,7 @@ export default function ButtonPanelControl() {
                         </Button>
                     </a>
 
-                    <a href="" className="nameButton">
+                    <a href="/adminlistmovie" className="nameButton">
                         <Button>
                             <MdLocalMovies size={30} />
                             Filmes
