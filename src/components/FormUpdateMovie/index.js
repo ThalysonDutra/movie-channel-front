@@ -4,13 +4,13 @@ import { Row, Button } from 'react-bootstrap';
 import axios from '../../services/axios';
 import { FormUpdateMovieComponent } from "./styled";
 import { loadMovieById } from '../../utils/loadMovieById';
-import { utilloadCategories} from '../../utils/utilloadCategories';
+import { utilloadCategories } from '../../utils/utilloadCategories';
 
 class FormUpdateMovies extends Component {
 
     state = {
         movie: [],
-        categories:[],
+        categories: [],
         id: '',
         name: '',
         year: '',
@@ -21,7 +21,8 @@ class FormUpdateMovies extends Component {
         countScore: '',
         score: '',
         idCategory: '',
-        nameCategory: ''
+        nameCategory: '',
+        estado: ''
     }
 
     async componentDidMount() {
@@ -44,11 +45,10 @@ class FormUpdateMovies extends Component {
     loadCategories = async () => {
         const categoryJson = await utilloadCategories(this.props.id);
         this.setState({ categories: categoryJson });
-        this.setState({idCategory: categoryJson['id']});
+        this.setState({ idCategory: categoryJson['id'] });
         this.setState({ categoryName: categoryJson['name'] });
-        
     }
-    
+
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,33 +76,34 @@ class FormUpdateMovies extends Component {
     }
 
 
-    handleDrop = async (e) => {
+    handleDrop = async (e, estado) => {
         e.preventDefault();
+
         let formErrors = false;
 
         if (formErrors) {
             return;
         }
         try {
-            const {nameCategory, idCategory} = this.state;
-            const [state, setState] = useState(idCategory); 
+            const [estado, setEstado] = useState('');
+            alert("Editar");
 
         } catch (e) {
 
         }
     }
 
-
-
+    
     render() {
 
         const { name, year, duration, description, categoryId, link } = this.state;
-        const { categories, id, categoryName, state } = this.state;
-        
-        
+        const {estado} = this.state;
+        const { categories } = this.state;
+
+
         return (
             <>
-                <FormUpdateMovieComponent >
+                <FormUpdateMovieComponent onSubmit={this.handleDrop}>
                     <div>
                         <Row>
                             <h2>Editar Filme</h2>
@@ -141,22 +142,22 @@ class FormUpdateMovies extends Component {
 
 
                         <Row>
-                            <select name="state" value={state}>
-                                <option>Selecione uma categoria</option>
-                                {categories.map( category => (
-                                    <option value = {category.id} 
-                                    onChange={e => this.setState({ category: e.target.value })}>
-                                    {category.name}
+                            <select name="estado" value={estado}>
+                                {categories.map(category => (
+                                    <option value ={category.id}
+                                        onChange={estado => this.setState({ categoryId: estado.target.value })}
+                                    >
+                                        {category.name}
                                     </option>
-                                    
-                                ))}                         
+
+                                ))}
                             </select>
-                        
+
 
                         </Row>
 
                         <Row>
-                            <input type='number'
+                            <input type='text'
                                 value={link}
                                 onChange={e => this.setState({ link: e.target.value })}
                                 placeholder="Link"

@@ -40,6 +40,10 @@ export const FormUpdateMovieComponent = styled.form`
     margin: 10px;
   }
 
+  option{
+    position: center;
+  }
+
   input {
     width: 300px;
     height: 60px;
